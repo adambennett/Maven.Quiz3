@@ -5,6 +5,32 @@ package rocks.zipcode.io.quiz3.arrays;
  */
 public class WaveGenerator {
     public static String[] wave(String str) {
-        return null;
+        int count = 0;
+        for (char c : str.toCharArray()) {
+            Character ca = c;
+            if (Character.isAlphabetic(ca)) {
+                count++;
+            }
+        }
+        String[] capped = new String[count];
+        for (int i = 0; i < count; i++) {
+            String toAdd = "";
+            int index = 0;
+            for (char c : str.toCharArray()) {
+                Character ca = c;
+                if (Character.isAlphabetic(ca)) {
+                    if (index == i) {
+                        toAdd += Character.toUpperCase(ca);
+                    } else {
+                        toAdd += Character.toLowerCase(ca);
+                    }
+                    index++;
+                } else {
+                    toAdd += ca;
+                }
+            }
+            capped[i] = toAdd;
+        }
+        return capped;
     }
 }
